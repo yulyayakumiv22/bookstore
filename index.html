@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Книгарня «Сторінка»</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #1a0f2e;
+      color: #f0ebe0;
+    }
+
+    /* ШАПКА */
+    .header {
+      background-color: #12091f;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #c9a84c;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      letter-spacing: 3px;
+      background: linear-gradient(to right, #c9a84c, #f5e6a3, #c9a84c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav a {
+      color: #f0ebe0;
+      text-decoration: none;
+      margin-left: 30px;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover { color: #c9a84c; }
+
+    /* БАНЕР */
+    .banner {
+      text-align: center;
+      padding: 80px 20px;
+      border-bottom: 1px solid #3a2a5e;
+    }
+
+    .banner h1 {
+      font-size: 3rem;
+      letter-spacing: 5px;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #c9a84c, #f5e6a3, #c9a84c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .banner p {
+      font-size: 1rem;
+      color: #b0a090;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .btn-main {
+      background-color: rgba(26, 15, 46, 0.8);
+      color: #f5e6a3;
+      border: 2px solid #c9a84c;
+      padding: 12px 35px;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: inherit;
+      letter-spacing: 2px;
+      border-radius: 50px;
+      transition: all 0.4s;
+      text-transform: uppercase;
+    }
+
+    .btn-main:hover {
+      background-color: #c9a84c;
+      color: #1a0f2e;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(201, 168, 76, 0.4);
+    }
+
+    /* КАТАЛОГ */
+    .catalog {
+      padding: 60px 40px;
+      background-color: #f5f0e8;
+    }
+
+    .catalog h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #1a0f2e;
+      margin-bottom: 40px;
+      letter-spacing: 3px;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .book-card {
+      background: #2a1a45;
+      border: 1px solid #c9a84c;
+      border-radius: 15px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .book-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(201, 168, 76, 0.2);
+    }
+
+    .book-card h3 {
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      background: linear-gradient(to right, #c9a84c, #f5e6a3, #c9a84c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .book-author {
+      color: #b0a090;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    .book-card p {
+      color: #d0c8b8;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 15px 0;
+      background: linear-gradient(to right, #c9a84c, #f5e6a3, #c9a84c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn-card {
+      background-color: rgba(26, 15, 46, 0.8);
+      color: #f5e6a3;
+      border: 2px solid #c9a84c;
+      padding: 10px 25px;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: inherit;
+      letter-spacing: 1px;
+      border-radius: 50px;
+      transition: all 0.3s;
+      text-transform: uppercase;
+    }
+
+    .btn-card:hover {
+      background-color: #c9a84c;
+      color: #1a0f2e;
+    }
+
+    /* ЖАНРИ */
+    .genres {
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .genres h2 {
+      font-size: 2rem;
+      letter-spacing: 3px;
+      margin-bottom: 30px;
+      background: linear-gradient(to right, #c9a84c, #f5e6a3, #c9a84c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .genres-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .genre-tag {
+      border: 1px solid #c9a84c;
+      color: #f0ebe0;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .genre-tag:hover {
+      background-color: #c9a84c;
+      color: #1a0f2e;
+      transform: translateY(-2px);
+    }
+
+    /* ФУТЕР */
+    footer {
+      background-color: #12091f;
+      border-top: 2px solid #c9a84c;
+      text-align: center;
+      padding: 30px;
+      color: #b0a090;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">СТОРІНКА</div>
+    <nav class="nav">
+      <a href="#catalog">Каталог</a>
+      <a href="#genres">Жанри</a>
+      <a href="#footer">Контакти</a>
+    </nav>
+  </header>
+
+  <div class="banner">
+    <h1>КНИГАРНЯ «СТОРІНКА»</h1>
+    <p>Понад 5 000 книг для справжніх читачів</p>
+    <button class="btn-main" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">КАТАЛОГ</button>
+  </div>
+
+  <div class="catalog" id="catalog">
+    <h2>Популярні книги</h2>
+    <div class="books-grid">
+
+      <div class="book-card">
+        <h3>Кобзар</h3>
+        <p class="book-author">Тарас Шевченко</p>
+        <p>Збірка поетичних творів — серце української літератури.</p>
+        <p class="price">180 грн</p>
+        <button class="btn-card" onclick="alert('Книгу \'Кобзар\' додано до кошика!')">ЗАМОВИТИ</button>
+      </div>
+
+      <div class="book-card">
+        <h3>Тигролови</h3>
+        <p class="book-author">Іван Багряний</p>
+        <p>Пригодницький роман про втечу та боротьбу за свободу.</p>
+        <p class="price">240 грн</p>
+        <button class="btn-card" onclick="alert('Книгу \'Тигролови\' додано до кошика!')">ЗАМОВИТИ</button>
+      </div>
+
+      <div class="book-card">
+        <h3>Місто</h3>
+        <p class="book-author">Валер'ян Підмогильний</p>
+        <p>Роман про молодого хлопця, який шукає себе у великому місті.</p>
+        <p class="price">195 грн</p>
+        <button class="btn-card" onclick="alert('Книгу \'Місто\' додано до кошика!')">ЗАМОВИТИ</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="genres" id="genres">
+    <h2>Жанри</h2>
+    <div class="genres-list">
+      <span class="genre-tag">📖 Класика</span>
+      <span class="genre-tag">🔮 Фантастика</span>
+      <span class="genre-tag">🔍 Детектив</span>
+      <span class="genre-tag">💡 Нон-фікшн</span>
+      <span class="genre-tag">🌹 Романтика</span>
+      <span class="genre-tag">🏔️ Пригоди</span>
+    </div>
+  </div>
+
+  <footer id="footer">
+    вул. Книжкова, 12, Львів &nbsp;|&nbsp; storinka@books.ua &nbsp;|&nbsp; (032) 123-45-67
+  </footer>
+
+</body>
+</html>
